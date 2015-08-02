@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="zachButler">
+<head>
+    <meta charset="UTF-8" />
+    <title>Zach Butler</title>
+
+    <link rel="stylesheet" href="./external/font-awesome/font-awesome.min.css" />
+    <link rel="stylesheet" href="./external/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <script type="text/javascript" src="./external/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="./external/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./external/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./external/bootstrap-ui/ui-bootstrap-tpls-0.13.1.min.js"></script>
+
+    <script type="text/javascript" src="./js/index.js"></script>
+</head>
+<body ng-controller="MainController">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-links">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand scroll-item">Zach Butler</span>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-links">
+                <ul class="list-inline social-links">
+                    <li>
+                        <a href="http://www.facebook.com" class="social-linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="http://www.facebook.com" class="social-github" target="_blank"><i class="fa fa-github"></i></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="#about" class="scroll-item">Learn More</li>
+                    <li id="#resume" class="scroll-item">Resume</li>
+                    <li id="#contact" class="scroll-item">Get in Touch</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <video id="background" autoplay loop muted>
+        <source src="./videos/monument-valley.mp4" type="video/mp4" />
+    </video>
+
+    <header>
+        <div class="header-content text-center">
+            <div class="header-content-inner">
+                <div class="col-xs-12 text-center">
+                    <div class="main-logo-img">
+                        <div class="app-icon">
+                            <img src="./img/logo.png" alt="ZB" />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <button class="btn btn-large btn-danger text-uppercase">Get to Know Me</button>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        &nbsp;
+    </section>
+
+    <section id="resume">
+        &nbsp;
+    </section>
+
+    <section id="contact">
+        &nbsp;
+    </section>
+
+    <footer class="text-center">
+        Copyright &copy; <span id="copyright"></span> Zach Butler
+    </footer>
+
+</body>
+</html>
