@@ -28,7 +28,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <span class="navbar-brand">Zach Butler</span>
+                <span class="navbar-brand">
+                    <a href="./index.html">Zach Butler</a>
+                </span>
             </div>
             <div class="collapse navbar-collapse" id="navbar-links">
                 <ul class="list-inline social-links">
@@ -47,8 +49,8 @@
         </div>
     </nav>
 
-    <video id="background" autoplay loop muted>
-        <source src="./videos/munich.mp4" type="video/mp4" />
+    <video id="background" class="hidden-xs hidden-sm" loop muted>
+        <source src="./videos/munich-medium-load.mp4" type="video/mp4" />
     </video>
 
     <header>
@@ -63,6 +65,10 @@
                 </div>
                 <hr />
                 <a class="btn btn-large btn-danger text-uppercase scroll-item" href="#about">Get to Know Me</a>
+                <noscript>
+                    <hr />
+                    You need JavaScript enabled for this site to work properly.
+                </noscript>
             </div>
         </div>
     </header>
@@ -76,9 +82,25 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
-                    <p>
-                        More information coming soon
-                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-5">
+                            <img src="./img/me.jpg" alt="Me" class="about-image" />
+                        </div>
+                        <div class="col-xs-12 col-md-7">
+                            <p>
+                                My name is Zach Butler. I am a senior majoring in Computer Science at North Carolina State University, set to graduate at the beginning of May 2016. I've been developing software since my freshman year of high school, always fascinated by the challenge of building a great software product, a challenge that incorporates much more than just the code written, and one that I believe I've worked hard to demonstrate I can accomplish, both independently and within large development teams.
+                            </p>
+                            <p>
+                                I am excited for a career that touches such a wide variety of fields. Software works best alongside other business creations and ideas, improving them with the efficiency of a machine. As such, I will not only be constantly learning about the latest in tech, but also new information about these adjoined fields, a chance many professions cannot offer to their employees, yet one that I find invaluable. It is the chance to, while still sticking to what I enjoy most, gain knowledge about much more than just that one thing, and become a more well-rounded mind overall.
+                            </p>
+                            <p>
+                                Outside of the classroom and the library, I enjoy heading to the gym to train for physical events. I ran the City of Oaks Marathon in November 2014 and completed the Wintergreen Spartan Super obstalce course race in August of 2015. I will do two more Spartan races by the end of 2015. I also enjoy playing racquetball, a sport I begun as a physical education class at NC State, but later joined the club for and began playing several hours of games a week with other members.
+                            </p>
+                            <p>
+                                <a href="#contact" class="scroll-item underline-hover no-color-change">My contact info and availability</a> can be found at the bottom of the page. You will also find a <a href="#resume" class="scroll-item no-color-change underline-hover">brief overview of my resume</a> (with a PDF link to the professional full version) and a <a href="#github" class="scroll-item underline-hover no-color-change">quick guide to my GitHub projects</a> further down the page. My LinkedIn and GitHub profiles can be found in the navigation bar at the top of the screen.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,9 +115,78 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
-                    <p>
-                        More information coming soon
-                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-7">
+                            <tabset>
+                                <tab heading="{{ resumeTabs[0].title }}" active="resumeTabs[0].active" disable="false">
+                                    <div class="text-left row" ng-repeat="item in resumeTabs[0].items">
+                                        <div class="col-xs-12" ng-if="isValidDisplayable(item)">
+                                            <span class="bullet-span">&ndash;</span>
+                                            <div class="bullet-item">{{ item }}</div>
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="{{ resumeTabs[1].title }}" active="resumeTabs[1].active" disable="false">
+                                    <div class="text-left row tab-col-headers hidden-xs hidden-sm" ng-if="resumeTabs[1].items.length > 0">
+                                        <div class="col-xs-5 text-underline">
+                                            Position
+                                        </div>
+                                        <div class="col-xs-3 text-underline">
+                                            Company
+                                        </div>
+                                        <div class="col-xs-4 text-underline">
+                                            Dates Worked
+                                        </div>
+                                    </div>
+                                    <div class="text-left row" ng-repeat="item in resumeTabs[1].items">
+                                        <div class="col-xs-12 col-md-5 text-bold">
+                                            {{ item.position }}
+                                        </div>
+                                        <div class="col-xs-12 col-md-3">
+                                            <a class="no-color-change"
+                                               ng-class="isValidDisplayable(item.companyUrl) ? 'underline-hover' : 'default-cursor no-underline-hover'"
+                                               ng-href="{{ isValidDisplayable(item.companyUrl) ? item.companyUrl : null }}" target="_blank">{{ item.company }}</a>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4">
+                                            {{ item.start }}&nbsp;&mdash;&nbsp;{{ item.end }}
+                                        </div>
+                                    </div>
+                                </tab>
+                                <tab heading="{{ resumeTabs[2].title }}" active="resumeTabs[2].active" disable="false">
+                                    <div class="text-left row tab-col-headers hidden-xs hidden-sm" ng-if="resumeTabs[2].items.length > 0">
+                                        <div class="col-xs-5 text-underline">
+                                            Institution
+                                        </div>
+                                        <div class="col-xs-3 text-underline">
+                                            GPA
+                                        </div>
+                                        <div class="col-xs-4 text-underline">
+                                            Dates Attended
+                                        </div>
+                                    </div>
+                                    <div class="text-left row" ng-repeat="item in resumeTabs[2].items">
+                                        <div class="col-xs-12 col-md-5 text-bold">
+                                            {{ item.school }}
+                                        </div>
+                                        <div class="col-xs-6 col-md-3">
+                                            {{ item.gpa }}<span ng-if="isValidDisplayable(item.majorGpa)">,&nbsp;{{ item.majorGpa }}&nbsp;In Major</span>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4">
+                                            {{ item.start }}&nbsp;&mdash;&nbsp;{{ item.end }}
+                                        </div>
+                                    </div>
+                                </tab>
+                            </tabset>
+                        </div>
+                        <div class="col-xs-12 col-md-5">
+                            <p>
+                                <a href="./docs/resume.pdf" target="_blank" class="no-color-change underline-hover">Full resume</a>
+                            </p>
+                            <p>
+                                <a href="https://www.linkedin.com/pub/zachary-butler/a5/b19/35" target="_blank" class="no-color-change underline-hover">LinkedIn Profile</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,9 +201,40 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
-                    <p>
-                        More information coming soon
-                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-7">
+                            <tabset>
+                                <tab ng-repeat="tab in githubTabs" heading="{{ tab.title }}" active="tab.active" disable="false">
+                                    <div class="row text-left">
+                                        <div class="col-xs-12">
+                                            <p class="text-italic">
+                                                {{ tab.subtitle }}
+                                            </p>
+                                            <p>
+                                                {{ tab.goal }}
+                                            </p>
+                                            <div class="container-fluid small">
+                                                <div class="row" ng-repeat="(part, desc) in tab.parts">
+                                                    <div class="col-xs-12 col-md-2 text-bold">{{ part }}</div>
+                                                    <div class="col-xs-12 col-md-10 text-italic">{{ desc }}</div>
+                                                </div>
+                                                <div class="row" ng-if="tab.parts == null">
+                                                    <div class="col-xs-12 text-italic">
+                                                        No directory tree as of yet. {{ tab.status }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tab>
+                            </tabset>
+                        </div>
+                        <div class="col-xs-12 col-md-5">
+                            <p>
+                                <a href="https://www.github.com/zcbutler" target="_blank" class="no-color-change underline-hover">My GitHub</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,16 +249,34 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
-                    <p>
-                        More information coming soon
-                    </p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-5">
+                            <p>
+                                2730 Wolf Village Way Unit 1575<br />
+                                Raleigh NC 27607
+                            </p>
+                            <p>
+                                zcbutler@ncsu.edu
+                            </p>
+                            <p>
+                                (919) 819-5639&nbsp;<span class="small">(cell) preferred</span><br />
+                                (919) 363-4546&nbsp;<span class="small">(home)</span>
+                            </p>
+                            <p class="text-italic hidden-xs hidden-sm">
+                                Please take note of my availability, shown on the calendar to the right. Any calls received during busy time blocks (shown in color) will, save for rare circumstances, go to my voicemail.
+                            </p>
+                        </div>
+                        <div class="hidden-xs col-sm-12 col-md-7">
+                            <iframe src="https://www.google.com/calendar/embed?src=zcbutler%40ncsu.edu&ctz=America/New_York&showTabs=0&showCalendars=0&mode=WEEK&showTitle=0" class="embedded-calendar"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="text-center small">
-        Video credit to FlowMotion1001 of YouTube<br />
+        Video credit to <a href="https://www.youtube.com/watch?v=6BbhS2ESa_I" target="_blank" class="underline-hover no-color-change">FlowMotion1001</a> of YouTube<br />
         Copyright &copy; <span id="copyright"></span> Zach Butler
     </footer>
 
