@@ -81,6 +81,12 @@ var isValidDisplayable = function(item) {
                 title: 'Work Experience',
                 items: [
                     {
+                        position: 'Software Development Engineer',
+                        company: 'Amazon',
+                        companyUrl: 'http://aws.amazon.com',
+                        start: 'Jul 2016',
+                        end: 'Present'
+                    },{
                         position: 'Vice President',
                         company: 'RydeBoard',
                         companyUrl: 'http://www.rydeboard.com',
