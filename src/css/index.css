@@ -44,6 +44,11 @@ nav .scroll-item:hover {
     color: #000000 !important
 }
 
+.scroll-item:focus, .scroll-item:active, .scroll-item::-moz-focus-inner {
+    border: none;
+    outline: none;
+}
+
 .navbar-right li {
     display: inline-block;
     height: 50px;
@@ -136,11 +141,13 @@ header h1 {
     margin-top: 25px;
 }
 
-hr {
+div.hr {
     width: 20%;
-    font-weight: bold;
-    border-radius: 5%;
-    border: 1px solid #C9302C;
+    border-radius: 5px;
+    margin: 10px 40%;
+    height: 2px;
+    background: #C9302C;
+    float: left;
 }
 
 div.app-icon img {

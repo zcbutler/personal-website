@@ -2,7 +2,7 @@ var setNavBackground = function () {
     var nav = $('nav');
     var scrollTop = $(window).scrollTop();
     var minScrollToBg = $('header').height() - nav.height();
-    var backgroundOpacity = Math.min(1, scrollTop / minScrollToBg);
+    var backgroundOpacity = Math.min(1, scrollTop / parseFloat(minScrollToBg));
     nav.css({
         'z-index': '10',
         'background': 'rgba(255, 255, 255, ' + backgroundOpacity + ')'
@@ -43,7 +43,7 @@ var resizeBackgroundVideo = function(width, height) {
 
 var scrollToSection = function(href, animationCallback) {
     var pos = $(href).offset().top - $('nav').outerHeight();
-    $('body').animate({
+    $('html, body').animate({
         scrollTop: pos
     }, 'slow', animationCallback());
 };
@@ -53,7 +53,7 @@ var isValidDisplayable = function(item) {
     return item != null && item.trim().length > 0;
 };
 
-(function() {
+(function () {
     angular.module('zachButler', ['ui.bootstrap'])
 
     .controller('MainController', function($scope) {
@@ -173,31 +173,34 @@ var isValidDisplayable = function(item) {
     });
 })();
 
-$(document).on('ready', function() {
+(function ($) {
+    $(document).on('ready', function () {
 
-    setCopyrightDate();
-    setNavBackground();
-
-    $(window).on('scroll', function () {
+        setCopyrightDate();
         setNavBackground();
-    });
 
-    $(window).on('resize', function() {
-        var video = document.getElementById('background');
-        resizeBackgroundVideo(video.videoWidth, video.videoHeight);
-    });
-
-    $('video#background').bind('loadedmetadata', function() {
-        resizeBackgroundVideo(this.videoWidth, this.videoHeight);
-        this.play();
-    });
-
-    $('.scroll-item').on('click', function(e) {
-        e.preventDefault();
-        var href = $(this).attr('href');
-        scrollToSection(href, function() {
-            $(this).blur();
+        $(window).on('scroll', function () {
+            setNavBackground();
         });
-    });
 
-});
+        $(window).on('resize', function () {
+            var video = document.getElementById('background');
+            resizeBackgroundVideo(video.videoWidth, video.videoHeight);
+        });
+
+        $('video#background').bind('loadedmetadata', function () {
+            resizeBackgroundVideo(this.videoWidth, this.videoHeight);
+            this.play();
+        });
+
+        $('.scroll-item').on('click', function (e) {
+            e.preventDefault();
+            var t = this;
+            var href = $(t).attr('href');
+            scrollToSection(href, function () {
+                $(t).blur();
+            });
+        });
+
+    });
+})(jQuery);
