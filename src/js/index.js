@@ -9,29 +9,37 @@ var setNavBackground = function () {
     });
 };
 
-var setCopyrightDate = function() {
-    var today = new Date();
-    $('span#copyright').html(today.getFullYear());
+var setCopyrightDate = function () {
+    $('span#copyright').html(new Date().getFullYear());
 };
 
-var resizeBackgroundVideo = function(width, height) {
+var setShiftedBackgroundVideo = function () {
+    var scrollTop = $(window).scrollTop();
+    var shiftRatio = 0.6;
+
+    $('video#background').css({
+        'top': '-' + (shiftRatio * scrollTop) + 'px'
+    });
+};
+
+var resizeBackgroundVideo = function (videoWidth, videoHeight) {
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var widthToHeight = {
-        video: width / height,
+        video: videoWidth / videoHeight,
         window: windowWidth / windowHeight
     };
     var video = $('video#background');
-    if (widthToHeight.window > widthToHeight.video) {   //Width too small
-        var currentDisplayWidth = width * (windowHeight / height);
+    if (widthToHeight.window > widthToHeight.video) {           // Width too small
+        var currentDisplayWidth = videoWidth * (windowHeight / videoHeight);
         var upscaleX = windowWidth / currentDisplayWidth;
         video.css({
             '-webkit-transform': 'scaleX(' + upscaleX + ')',
             '-ms-transform': 'scaleX(' + upscaleX + ')',
             'transform': 'scaleX(' + upscaleX + ')'
         });
-    } else {                                            //Height too small
-        var currentDisplayHeight = height * (windowWidth / width);
+    } else if (widthToHeight.window < widthToHeight.video) {    // Height too small
+        var currentDisplayHeight = videoHeight * (windowWidth / videoWidth);
         var upscaleY = windowHeight / currentDisplayHeight;
         video.css({
             '-webkit-transform': 'scaleY(' + upscaleY + ')',
@@ -41,30 +49,19 @@ var resizeBackgroundVideo = function(width, height) {
     }
 };
 
-var scrollToSection = function(href, animationCallback) {
+var scrollToSection = function (href, animationCallback) {
     var pos = $(href).offset().top - $('nav').outerHeight();
     $('html, body').animate({
         scrollTop: pos
     }, 'slow', animationCallback());
 };
 
-// Returns true if a String is valid to take up space and be displayed in the DOM
-var isValidDisplayable = function(item) {
-    return item != null && item.trim().length > 0;
-};
-
 (function () {
     angular.module('zachButler', ['ui.bootstrap'])
 
-    .controller('MainController', function($scope) {
-
-        $scope.isValidDisplayable = function(item) {
-            return isValidDisplayable(item);
-        };
+    .controller('MainController', function ($scope) {
 
         // Tab data for resume section
-        // Each tab has its own items layout; see the HTML for how it looks. Each property is optional (just make it '' or null)
-        // ALL PROPERTY VALUES SHOULD BE STRINGS (except if null value)
         $scope.resumeTabs = [
             {
                 title: 'Highlights',
@@ -76,6 +73,9 @@ var isValidDisplayable = function(item) {
                     'Knowledge of creating APIs with Jersey and Swagger',
                     'Version control experience with both Git and Subversion'
                 ],
+                render: function (item) {
+                    return item;
+                },
                 active: true
             },{
                 title: 'Work Experience',
@@ -91,7 +91,7 @@ var isValidDisplayable = function(item) {
                         company: 'RydeBoard',
                         companyUrl: 'http://www.rydeboard.com',
                         start: 'Jul 2015',
-                        end: 'Present'
+                        end: 'Jul 2016'
                     },{
                         position: 'Software Engineer Intern',
                         company: 'SpinFusion',
@@ -107,9 +107,9 @@ var isValidDisplayable = function(item) {
                     },{
                         position: 'Teaching Assistant',
                         company: 'NC State University',
-                        companyUrl: '',
+                        companyUrl: 'https://www.csc.ncsu.edu',
                         start: 'Aug 2014',
-                        end: 'Present'
+                        end: 'May 2016'
                     }
                 ],
                 active: false
@@ -125,7 +125,7 @@ var isValidDisplayable = function(item) {
                     },{
                         school: 'Raleigh Charter High School',
                         gpa: '3.9',
-                        majorGpa: '',
+                        majorGpa: null,
                         start: 'Aug 2009',
                         end: 'June 2013'
                     }
@@ -134,42 +134,35 @@ var isValidDisplayable = function(item) {
             }
         ];
 
-        // Tab data for github tour section
-        // Each tab has a subtitle for the project, the goal for the project, status message (only for parts == null), and a "table" of generic subparts which corresponding descriptions (JSON object with partName:description)
-        // ALL PROPERTY VALUES SHOULD BE STRINGS (except if null value)
-        $scope.githubTabs = [
+        // Tab data for projects section
+        $scope.projectTabs = [
             {
-                title: 'User Path',
-                subtitle: 'Determine a user\'s path of travel based off prior location data',
-                goal: 'Redefine GPS software to only search for locations the user has not yet passed',
-                parts: null,
-                status: 'Currently porting this functionality from a pre-existing Android application I independently developed. Work in progress.',
+                organization: 'Amazon',
+                subtitle: 'Simple Email Service - AWS',
+                projects: {
+                    'Sending Metrics': 'SES customers now have unique and detailed control and information about their email sending statistics.'
+                },
                 active: true
             },{
-                title: 'Balance',
-                subtitle: 'A simple ball-balancing game in HTML5',
-                goal: 'Learn how HTML5 and JavaScript interact while having fun at the same time',
-                parts: null,
-                status: 'Currently porting this game from another server and site I owned, as well as moving the repository itself to be with the rest of my projects. Work in progress.',
+                organization: 'RydeBoard',
+                subtitle: 'Vice President',
+                projects: null,
                 active: false
             },{
-                title: 'Personal Site',
-                subtitle: 'The source code for the page you\'re on',
-                goal: 'Design a modern, efficient website that exemplifies my knowledge of web development and design',
-                parts: {
-                    root: 'Contains all the below directories alongside index.html.',
-                    css: 'All the internal styling for the site, written by me to either create my own style from scratch or slightly modify and override inherited styles from external sources.',
-                    docs: 'Any documents linked to by the site (e.g. my resume).',
-                    external: 'All the imported libraries and frameworks used on the site, from Bootstrap to AngularJS to Font Awesome and more. Each subfolder within contains all files for that particular library or framework.',
-                    html: 'Currently empty, but its purpose is to contain any and all other HTML files for the site (categorized as needed), besides index.html.',
-                    img: 'All images used on the site, including the pictures of me in the About section, the favicon, and the ZB logo in the header.',
-                    js: 'All the internal JavaScript for the site, written by me to enhance the user experience. It uses a combination of raw JS, AngularJS, and jQuery to ensure the best site experience possible.',
-                    videos: 'Any videos used on the site, most importantly the background video seen on the header.'
+                organization: 'SpinFusion',
+                subtitle: 'Software Engineer Intern',
+                projects: null,
+                active: false
+            },{
+                organization: 'NC State',
+                subtitle: 'Teaching Assistant - Introductory Java',
+                projects: {
+                    'Feedback Reports': 'All students in Introductory Java now have PDF files full of numerical and verbal presentation feedback automatically created for them. Before, this information was not available to the students.'
                 },
-                status: '',
                 active: false
             }
         ];
+
     });
 })();
 
@@ -178,14 +171,17 @@ var isValidDisplayable = function(item) {
 
         setCopyrightDate();
         setNavBackground();
+        setShiftedBackgroundVideo();
 
         $(window).on('scroll', function () {
             setNavBackground();
+            setShiftedBackgroundVideo();
         });
 
         $(window).on('resize', function () {
             var video = document.getElementById('background');
             resizeBackgroundVideo(video.videoWidth, video.videoHeight);
+            setShiftedBackgroundVideo();
         });
 
         $('video#background').bind('loadedmetadata', function () {

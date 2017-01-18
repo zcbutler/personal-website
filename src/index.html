@@ -2,6 +2,7 @@
 <html lang="en" ng-app="zachButler">
 <head>
     <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="sm5X_dONVRl_4KQECzD0I9dsL6ItVE5R5jYH_lfIsRw" />
     <title>Zach Butler</title>
 
     <link rel="icon" href="./img/icon.ico" />
@@ -16,8 +17,11 @@
     <script type="text/javascript" src="./external/bootstrap-ui/ui-bootstrap-tpls-0.13.1.min.js"></script>
 
     <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/google-analytics.js"></script>
 </head>
 <body ng-controller="MainController">
+    <!-- For LinkedIn badge -->
+    <!--<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>-->
 
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -33,16 +37,16 @@
                 </span>
             </div>
             <div class="collapse navbar-collapse" id="navbar-links">
-                <ul class="list-inline social-links">
+                <ul class="list-inline social-links hidden-xs hidden-sm">
                     <li>
-                        <a href="https://www.linkedin.com/pub/zachary-butler/a5/b19/35" class="social-linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/zachary-butler-035b19a5" class="social-linkedin" target="_blank"><i class="fa fa-linkedin"></i></a>
                         <a href="https://www.github.com/zcbutler" class="social-github" target="_blank"><i class="fa fa-github"></i></a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#about" class="scroll-item">Learn More</a></li>
                     <li><a href="#resume" class="scroll-item">Resume</a></li>
-                    <li><a href="#github" class="scroll-item">GitHub Tour</a></li>
+                    <li><a href="#projects" class="scroll-item">Projects</a></li>
                     <li><a href="#contact" class="scroll-item">Get in Touch</a></li>
                 </ul>
             </div>
@@ -75,29 +79,38 @@
 
     <section id="about">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-md-10 col-md-offset-1">
-                    <h2>About</h2>
-                </div>
-            </div>
-            <div class="row">
+            <div class="row no-heading">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
                     <div class="row">
-                        <div class="col-xs-12 col-md-5">
-                            <img src="./img/me.jpg" alt="Me" class="about-image" />
+                        <div class="col-xs-12 col-md-5 hidden-sm hidden-xs" id="about-image-container">
+                            <img src="img/me.jpg" alt="Me" class="about-image" />
                         </div>
-                        <div class="col-xs-12 col-md-7">
+                        <div class="col-xs-12 col-md-7 col-xs-12">
                             <p>
-                                My name is Zach Butler. I am a senior majoring in Computer Science at North Carolina State University, set to graduate at the beginning of May 2016. I've been developing software since my freshman year of high school, always fascinated by the challenge of building a great software product, a challenge that incorporates much more than just the code written, and one that I believe I've worked hard to demonstrate I can accomplish, both independently and within large development teams.
+                                My name is <strong>Zach Butler</strong>. I am a <strong>Software Development Engineer</strong>
+                                working at Amazon within <strong>Amazon Web Services</strong> on the <strong>Simple Email
+                                Service</strong> (SES) team in Seattle. I've been developing software since my freshman
+                                year of high school, having always been fascinated by the challenge of building a great
+                                software project that consistently meets high standards of both customer experience and
+                                code quality. Through several years of constant learning and refinement of my skills and
+                                processes, I believe I consistently demonstrate my high software engineering abilities.
                             </p>
                             <p>
-                                I am excited for a career that touches such a wide variety of fields. Software works best alongside other business creations and ideas, improving them with the efficiency of a machine. As such, I will not only be constantly learning about the latest in tech, but also new information about these adjoined fields, a chance many professions cannot offer to their employees, yet one that I find invaluable. It is the chance to, while still sticking to what I enjoy most, gain knowledge about much more than just that one thing, and become a more well-rounded mind overall.
+                                I am excited to build a career in a field that affects such a wide spectrum of society.
+                                Software has the ability to improve, simplify, accelerate, and refine existing processes
+                                within our daily lives, as is proven by the work I and my colleagues do on the massive
+                                (and forever growing) cloud computing platform that is AWS. So that I can have as large
+                                a positive impact I can, I block off a few hours each day to be constantly learning
+                                about the latest in software development, technology, industry breakthroughs, and
+                                whatever other information is relevant to my work.
                             </p>
                             <p>
-                                Outside of the classroom and the library, I enjoy heading to the gym to train for physical events. I ran the City of Oaks Marathon in November 2014 and completed the Wintergreen Spartan Super obstalce course race in August of 2015. I will do two more Spartan races by the end of 2015. I also enjoy playing racquetball, a sport I begun as a physical education class at NC State, but later joined the club for and began playing several hours of games a week with other members.
-                            </p>
-                            <p>
-                                <a href="#contact" class="scroll-item underline-hover no-color-change">My contact info and availability</a> can be found at the bottom of the page. You will also find a <a href="#resume" class="scroll-item no-color-change underline-hover">brief overview of my resume</a> (with a PDF link to the professional full version) and a <a href="#github" class="scroll-item underline-hover no-color-change">quick guide to my GitHub projects</a> further down the page. My LinkedIn and GitHub profiles can be found in the navigation bar at the top of the screen.
+                                <a href="#contact" class="scroll-item underline-hover no-color-change"><strong>My contact
+                                    info and availability</strong></a> can be found at the bottom of the page. You will
+                                also find a <a href="#resume" class="scroll-item no-color-change underline-hover">
+                                <strong>brief overview of my resume</strong></a> (with a PDF link to the professional
+                                full version). My <strong>LinkedIn</strong> and <strong>GitHub</strong> profiles can be
+                                found in the navigation bar at the top of the screen.
                             </p>
                         </div>
                     </div>
@@ -120,14 +133,14 @@
                             <tabset>
                                 <tab heading="{{ resumeTabs[0].title }}" active="resumeTabs[0].active" disable="false">
                                     <div class="text-left row" ng-repeat="item in resumeTabs[0].items">
-                                        <div class="col-xs-12" ng-if="isValidDisplayable(item)">
+                                        <div class="col-xs-12">
                                             <span class="bullet-span">&ndash;</span>
                                             <div class="bullet-item">{{ item }}</div>
                                         </div>
                                     </div>
                                 </tab>
                                 <tab heading="{{ resumeTabs[1].title }}" active="resumeTabs[1].active" disable="false">
-                                    <div class="text-left row tab-col-headers hidden-xs hidden-sm" ng-if="resumeTabs[1].items.length > 0">
+                                    <div class="text-left row tab-col-headers hidden-xs hidden-sm" ng-if="resumeTabs[1].items.length">
                                         <div class="col-xs-5 text-underline">
                                             Position
                                         </div>
@@ -143,9 +156,7 @@
                                             {{ item.position }}
                                         </div>
                                         <div class="col-xs-12 col-md-3">
-                                            <a class="no-color-change"
-                                               ng-class="isValidDisplayable(item.companyUrl) ? 'underline-hover' : 'default-cursor no-underline-hover'"
-                                               ng-href="{{ isValidDisplayable(item.companyUrl) ? item.companyUrl : null }}" target="_blank">{{ item.company }}</a>
+                                            <a class="no-color-change underline-hover" href="{{ item.companyUrl }}" target="_blank">{{ item.company }}</a>
                                         </div>
                                         <div class="col-xs-12 col-md-4">
                                             {{ item.start }}&nbsp;&mdash;&nbsp;{{ item.end }}
@@ -153,7 +164,7 @@
                                     </div>
                                 </tab>
                                 <tab heading="{{ resumeTabs[2].title }}" active="resumeTabs[2].active" disable="false">
-                                    <div class="text-left row tab-col-headers hidden-xs hidden-sm" ng-if="resumeTabs[2].items.length > 0">
+                                    <div class="text-left row tab-col-headers hidden-xs hidden-sm" ng-if="resumeTabs[2].items.length">
                                         <div class="col-xs-5 text-underline">
                                             Institution
                                         </div>
@@ -169,7 +180,7 @@
                                             {{ item.school }}
                                         </div>
                                         <div class="col-xs-6 col-md-3">
-                                            {{ item.gpa }}<span ng-if="isValidDisplayable(item.majorGpa)">,&nbsp;{{ item.majorGpa }}&nbsp;In Major</span>
+                                            {{ item.gpa }}<span ng-if="item.majorGpa">,&nbsp;{{ item.majorGpa }}&nbsp;In Major</span>
                                         </div>
                                         <div class="col-xs-12 col-md-4">
                                             {{ item.start }}&nbsp;&mdash;&nbsp;{{ item.end }}
@@ -183,7 +194,10 @@
                                 <a href="./docs/resume.pdf" target="_blank" class="no-color-change underline-hover">Full resume</a>
                             </p>
                             <p>
-                                <a href="https://www.linkedin.com/pub/zachary-butler/a5/b19/35" target="_blank" class="no-color-change underline-hover">LinkedIn Profile</a>
+                                <a href="https://www.linkedin.com/in/zachary-butler-035b19a5" target="_blank" class="no-color-change underline-hover">LinkedIn</a>
+                            </p>
+                            <p>
+                                <a href="https://angel.co/zachary-butler" target="_blank" class="no-color-change underline-hover">AngelList</a>
                             </p>
                         </div>
                     </div>
@@ -192,11 +206,11 @@
         </div>
     </section>
 
-    <section id="github">
+    <section id="projects">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-10 col-md-offset-1">
-                    <h2>GitHub Tour</h2>
+                    <h2>Projects</h2>
                 </div>
             </div>
             <div class="row">
@@ -204,23 +218,20 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-7">
                             <tabset>
-                                <tab ng-repeat="tab in githubTabs" heading="{{ tab.title }}" active="tab.active" disable="false">
+                                <tab ng-repeat="tab in projectTabs" heading="{{ tab.organization }}" active="tab.active" disable="false">
                                     <div class="row text-left">
                                         <div class="col-xs-12">
                                             <p class="text-italic">
                                                 {{ tab.subtitle }}
                                             </p>
-                                            <p>
-                                                {{ tab.goal }}
-                                            </p>
-                                            <div class="container-fluid small">
-                                                <div class="row" ng-repeat="(part, desc) in tab.parts">
-                                                    <div class="col-xs-12 col-md-2 text-bold">{{ part }}</div>
-                                                    <div class="col-xs-12 col-md-10 text-italic">{{ desc }}</div>
+                                            <div class="container-fluid">
+                                                <div class="row" ng-if="tab.projects" ng-repeat="(project, description) in tab.projects">
+                                                    <div class="col-xs-12 col-md-3 text-bold">{{ project }}</div>
+                                                    <div class="col-xs-12 col-md-9 text-italic">{{ description }}</div>
                                                 </div>
-                                                <div class="row" ng-if="tab.parts == null">
+                                                <div class="row" ng-if="!tab.projects">
                                                     <div class="col-xs-12 text-italic">
-                                                        No directory tree as of yet. {{ tab.status }}
+                                                        No disclosable projects.
                                                     </div>
                                                 </div>
                                             </div>
@@ -253,8 +264,7 @@
                         <div class="col-xs-12 col-md-5">
                             <p>
                                 1823 Terry Ave Apt 2901<br>
-                                Seattle WA 98101-2413<br>
-                                <span class="small">(begins July 11)</span>
+                                Seattle WA 98101-2413
                             </p>
                             <p>
                                 zach.butler0928@gmail.com
@@ -271,7 +281,7 @@
 
     <footer class="text-center small">
         Video credit to <a href="https://www.youtube.com/watch?v=6BbhS2ESa_I" target="_blank" class="underline-hover no-color-change">FlowMotion1001</a> of YouTube<br />
-        Copyright &copy; <span id="copyright"></span> Zach Butler
+        Copyright &copy; 2015-<span id="copyright">2017</span> Zach Butler
     </footer>
 
 </body>

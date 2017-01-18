@@ -1,4 +1,4 @@
-
 src/videos
-.idea
-/*.iml
+.idea/*
+*.db
+.DS_Store
