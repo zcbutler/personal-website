@@ -9,11 +9,11 @@ nav {
     font-size: 0.9em;
     font-family: Helvetica;
     letter-spacing: 2px;
-    color: #333333 !important;
+    color: #333 !important;
 }
 
 span.navbar-brand a {
-    color: #333333 !important;
+    color: #333 !important;
 }
 
 .navbar-brand a,
@@ -31,17 +31,17 @@ nav .scroll-item:focus {
 
 span.navbar-brand a:hover {
     cursor: pointer;
-    color: #000000 !important;
+    color: #000 !important;
 }
 
 nav .scroll-item {
     cursor: pointer;
     padding: 0 !important;
-    color: #333333 !important;
+    color: #333 !important;
 }
 
 nav .scroll-item:hover {
-    color: #000000 !important
+    color: #000 !important
 }
 
 .scroll-item:focus, .scroll-item:active, .scroll-item::-moz-focus-inner {
@@ -130,7 +130,7 @@ section:nth-child(odd) .nav-pills > li.active > a:focus  {
 }
 
 section:nth-child(even) {
-    background-color: #CCCCCC;
+    background-color: #CCC;
     color: #222;
 }
 
@@ -164,8 +164,8 @@ div.app-icon img {
 footer {
     width: 100%;
     padding: 10px;
-    background-color: #CCCCCC;
-    color: #333333;
+    background-color: #CCC;
+    color: #333;
 }
 
 div.tab-col-headers {
