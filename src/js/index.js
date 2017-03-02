@@ -67,11 +67,11 @@ var scrollToSection = function (href, animationCallback) {
                 title: 'Highlights',
                 items: [
                     'Full stack developer',
-                    'Extensive front end development experience with ReactJS, AngularJS, jQuery, plain JavaScript, Bootstrap, CSS3, and HTML5',
-                    'Back end development experience with Java, MySQL, and some PHP and Python',
-                    'Experience with Linux and Windows, and C programming',
-                    'Knowledge of creating APIs with Jersey and Swagger',
-                    'Version control experience with both Git and Subversion'
+                    'Front end development experience with AngularJS, ReactJS, jQuery, plain JavaScript, Bootstrap, CSS3, and HTML5',
+                    'Back end development experience with Java and Python',
+                    'Experience with Linux, Mac/OS X, and Windows',
+                    'Knowledge of creating RESTful APIs',
+                    'Version control experience with Git'
                 ],
                 render: function (item) {
                     return item;
